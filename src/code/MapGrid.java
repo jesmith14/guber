@@ -15,15 +15,15 @@ public class MapGrid {
 		this.mapSize = n;
 		this.setUpMap();
 	}
-	
+
 	public void setUpMap() {
 		Point randomLocation;
 		int x, y;
-		System.out.println(this.mapSize);
 		for(int i = 0; i < drivers.length; i ++) {
 			x = (int) (Math.random() * this.mapSize);
 			y = (int) (Math.random() * this.mapSize);
 			randomLocation = new Point(x, y);
+			this.drivers[i].setLocation(randomLocation);
 			this.grid[x][y] = 1;
 		}
 		for(int j = 0; j < passengers.length; j++) {
@@ -33,6 +33,7 @@ public class MapGrid {
 				x = (int) (Math.random() * this.mapSize);
 				y = (int) (Math.random() * this.mapSize);
 				randomLocation = new Point(x, y);
+//				this.passengers[i]
 			}
 			this.grid[x][y] = 2;
 		}
