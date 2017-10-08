@@ -8,6 +8,12 @@ public class MapGrid {
 	private Driver[] drivers;
 	private int mapSize;
 	
+	/*
+	 * MapGrid constructor 
+	 * @params integer value n for size of the array
+	 * Driver [] drivers that indicates current drivers
+	 * Passenger [] passengers that indicates current passengers
+	 */
 	public MapGrid(int n, Driver[] drivers, Passenger[] passengers) {
 		this.grid = new int[n][n];
 		this.passengers = passengers;
@@ -16,6 +22,10 @@ public class MapGrid {
 		this.setUpMap();
 	}
 
+	/*
+	 * Function to set up the 2D array, initializing 0 for empty values, 
+	 * 1 for a driver spot, and 2 for a passenger spot
+	 */
 	public void setUpMap() {
 		Point randomLocation;
 		int x, y;
@@ -51,6 +61,9 @@ public class MapGrid {
 		return this.passengers;
 	}
 	
+	/*
+	 * Helper function to print the current map for testing
+	 */
 	public void PrintMap() {
 		for(int i = 0; i < grid.length; i++) {
 			for(int j = 0; j < grid[0].length; j++) {
