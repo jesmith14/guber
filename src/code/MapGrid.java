@@ -65,14 +65,17 @@ public class MapGrid {
 	 * Helper function to print the current map for testing
 	 */
 	public void PrintMap() {
-		for(int i = 0; i < grid.length; i++) {
-			for(int j = 0; j < grid[0].length; j++) {
-				if(grid[i][j] != 1) {
-					grid[i][j] = 0;
+		for(int i = 0; i < this.grid.length; i++) {
+			for(int j = 0; j < this.grid[0].length; j++) {
+				if(this.grid[i][j] != 1 && this.grid[i][j] != 2) {
+					this.grid[i][j] = 0;
 					System.out.print(0 + "  ");
 				}
-				else {
+				else if(this.grid[i][j] == 1) {
 					System.out.print(1 + "  ");
+				}
+				else {
+					System.out.print(2 + "  ");
 				}
 			}
 			System.out.println();
