@@ -19,7 +19,12 @@ public class MapGrid {
 		this.passengers = passengers;
 		this.drivers = drivers;
 		this.mapSize = n;
-		this.setUpMap();
+		if(drivers.length + passengers.length > (n * n)) {
+			System.out.println("ERROR: Array not big enough for drivers and passengers");
+		}
+		else {
+			this.setUpMap();
+		}
 	}
 
 	/*
@@ -39,7 +44,7 @@ public class MapGrid {
 		for(int j = 0; j < passengers.length; j++) {
 			x = (int) (Math.random() * this.mapSize);
 			y = (int) (Math.random() * this.mapSize);
-			while(grid[x][y] == 0){
+			while(grid[x][y] != 0){
 				x = (int) (Math.random() * this.mapSize);
 				y = (int) (Math.random() * this.mapSize);
 				randomLocation = new Point(x, y);
