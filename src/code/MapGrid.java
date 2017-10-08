@@ -43,7 +43,7 @@ public class MapGrid {
 				x = (int) (Math.random() * this.mapSize);
 				y = (int) (Math.random() * this.mapSize);
 				randomLocation = new Point(x, y);
-//				this.passengers[i]
+				this.passengers[j].setLocation(randomLocation);
 			}
 			this.grid[x][y] = 2;
 		}
