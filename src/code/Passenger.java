@@ -4,12 +4,15 @@ import java.awt.Point;
 
 public class Passenger {
 	private String name;
-	private float balance;
+	private double balance;
 	public int rating;
 	public Point location;
 	
-	public Passenger() {
-		
+	public Passenger(String name, double balance, int rating, Point location) {
+		this.name = name;
+		this.balance = balance;
+		this.rating = rating;
+		this.location = location;
 	}
 	
 	public String getName() {
@@ -20,11 +23,11 @@ public class Passenger {
 		this.name = name;
 	}
 	
-	public float getBalance() {
+	public double getBalance() {
 		return this.balance;
 	}
 	
-	public void setBalance(float balance) {
+	public void setBalance(double balance) {
 		this.balance = balance;
 	}
 	

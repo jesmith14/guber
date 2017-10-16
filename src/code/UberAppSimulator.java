@@ -4,12 +4,12 @@ import java.awt.Point;
 
 public class UberAppSimulator {
 	public static void main(String [] args) {
-		Driver testDriver1 = new Driver("Jessie", 0, "Hyundai Accent", code.Status.AVAILABLE, 5, new Point(0,0));
-		Driver testDriver2 = new Driver("Benjamin", 0, "Toyota Camarola", code.Status.AVAILABLE, 5, new Point(0,0));
-		Driver testDriver3 = new Driver("Frank", 0, "Prius", code.Status.AVAILABLE, 5, new Point(0,0));
-		Passenger testPassenger1 = new Passenger();
-		Passenger testPassenger2 = new Passenger();
-		Passenger testPassenger3 = new Passenger();
+		Driver testDriver1 = new Driver("Jessie", 0, "Hyundai Accent", code.Status.AVAILABLE, -1, new Point(0,0));
+		Driver testDriver2 = new Driver("Benjamin", 0, "Toyota Camarola", code.Status.AVAILABLE, -1, new Point(0,0));
+		Driver testDriver3 = new Driver("Frank", 0, "Prius", code.Status.AVAILABLE, -1, new Point(0,0));
+		Passenger testPassenger1 = new Passenger("Manny", 20, -1, new Point(0,0));
+		Passenger testPassenger2 = new Passenger("Alexa", 400, -1, new Point(0,0));
+		Passenger testPassenger3 = new Passenger("Ryan", 0, -1, new Point(0,0));
 		Driver[] drivers = new Driver[3];
 		Passenger[] passengers = new Passenger[3];
 		drivers[0] = testDriver1;
