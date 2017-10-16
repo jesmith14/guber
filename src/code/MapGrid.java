@@ -1,12 +1,13 @@
 package code;
 
 import java.awt.Point;
+import java.util.Arrays;
 
 public class MapGrid {
 	private int[][] grid;
 	private Passenger[] passengers;
 	private Driver[] drivers;
-	private int mapSize;
+	private final int mapSize = 50;
 	
 	/*
 	 * MapGrid constructor 
@@ -14,17 +15,11 @@ public class MapGrid {
 	 * Driver [] drivers that indicates current drivers
 	 * Passenger [] passengers that indicates current passengers
 	 */
-	public MapGrid(int n, Driver[] drivers, Passenger[] passengers) {
-		this.grid = new int[n][n];
+	public MapGrid(Driver[] drivers, Passenger[] passengers) {
+		this.grid = new int[mapSize][mapSize];
 		this.passengers = passengers;
 		this.drivers = drivers;
-		this.mapSize = n;
-		if(drivers.length + passengers.length > (n * n)) {
-			System.out.println("ERROR: Array not big enough for drivers and passengers");
-		}
-		else {
-			this.setUpMap();
-		}
+		this.setUpMap();
 	}
 
 	/*
@@ -39,18 +34,14 @@ public class MapGrid {
 			y = (int) (Math.random() * this.mapSize);
 			randomLocation = new Point(x, y);
 			this.drivers[i].setLocation(randomLocation);
-			this.grid[x][y] = 1;
+			this.grid[x][y]++;
 		}
 		for(int j = 0; j < passengers.length; j++) {
 			x = (int) (Math.random() * this.mapSize);
 			y = (int) (Math.random() * this.mapSize);
-			while(grid[x][y] != 0){
-				x = (int) (Math.random() * this.mapSize);
-				y = (int) (Math.random() * this.mapSize);
-				randomLocation = new Point(x, y);
-				this.passengers[j].setLocation(randomLocation);
-			}
-			this.grid[x][y] = 2;
+			randomLocation = new Point(x, y);
+			this.passengers[j].setLocation(randomLocation);
+			this.grid[x][y]++;
 		}
 	}
 	
@@ -72,16 +63,7 @@ public class MapGrid {
 	public void PrintMap() {
 		for(int i = 0; i < this.grid.length; i++) {
 			for(int j = 0; j < this.grid[0].length; j++) {
-				if(this.grid[i][j] != 1 && this.grid[i][j] != 2) {
-					this.grid[i][j] = 0;
-					System.out.print(0 + "  ");
-				}
-				else if(this.grid[i][j] == 1) {
-					System.out.print(1 + "  ");
-				}
-				else {
-					System.out.print(2 + "  ");
-				}
+					System.out.print(this.grid[i][j]);
 			}
 			System.out.println();
 		}

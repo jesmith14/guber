@@ -16,7 +16,7 @@ public class UberAppSimulator {
 		passengers[0] = testPassenger1;
 		passengers[1] = testPassenger2;
 		passengers[2] = testPassenger3;
-		MapGrid testMap = new MapGrid(5, drivers, passengers);
+		MapGrid testMap = new MapGrid(drivers, passengers);
 		testMap.PrintMap();
 	}
 }
