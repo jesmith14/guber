@@ -1,7 +1,6 @@
 package code;
 
 import java.awt.Point;
-import java.util.Arrays;
 
 public class MapGrid {
 	private int[][] grid;
@@ -68,5 +67,4 @@ public class MapGrid {
 			System.out.println();
 		}
 	}
-
 }

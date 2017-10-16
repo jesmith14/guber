@@ -4,14 +4,19 @@ import java.awt.Point;
 
 public class Driver {
 	private String name;
-	private float balance;
+	private double balance;
 	private String carTitle;
-	private String status;
+	private Status status;
 	private int rating;
 	private Point location;
 	
-	public Driver() {
-		
+	public Driver(String name, double balance, String carTitle, Status status, int rating, Point location) {
+		this.name = name;
+		this.balance = balance;
+		this.carTitle = carTitle;
+		this.status = status;
+		this.rating = rating;
+		this.location = location;
 	}
 	
 	public String getName() {
@@ -22,11 +27,11 @@ public class Driver {
 		this.name = name;
 	}
 	
-	public float getBalance() {
+	public double getBalance() {
 		return this.balance;
 	}
 	
-	public void setBalance(float balance) {
+	public void setBalance(double balance) {
 		this.balance = balance;
 	}
 	
@@ -38,11 +43,11 @@ public class Driver {
 		this.carTitle = carTitle;
 	}
 	
-	public String getStatus() {
+	public Status getStatus() {
 		return this.status;
 	}
 	
-	public void setStatus(String status) {
+	public void setStatus(Status status) {
 		this.status = status;
 	}
 	
