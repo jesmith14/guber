@@ -1,24 +1,83 @@
 package code;
 
 import java.awt.Point;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.Scanner;
 
 public class UberAppSimulator {
+	
+	private static ArrayList<Driver> drivers;
+	private static ArrayList<Passenger> passengers;
+	
+	public UberAppSimulator() {
+		drivers = new ArrayList<Driver>();
+		passengers = new ArrayList<Passenger>();
+	}
+	
+	public static void readFileInfo() throws FileNotFoundException {
+		System.out.println("Reading from file.");
+	    String fFileName = System.getProperty("user.dir")+"/"+"Project1Input.txt";
+	    Scanner scanner = new Scanner(new FileInputStream(fFileName));
+	    String[] scanned = null;
+	    String driverName;
+	    Double driverBalance;
+	    String carTitle;
+	    Status driverStatus;
+	    Double rating;
+	    int numRatings;
+	    int x, y;
+	    Point driverLoc;
+	    String passengerName;
+	    Double passengerBalance;
+	    Point passengerLoc;
+	    try {
+	      while (scanner.hasNextLine()){
+	    	  scanned = scanner.nextLine().split(",");
+	    	  if(scanned[0].charAt(0) == 'D') {
+		    	  driverName = scanned[1];
+		    	  driverBalance = Double.parseDouble(scanned[2]);
+		    	  carTitle = scanned[3];
+		    	  driverStatus = Status.valueOf(scanned[4]);
+		    	  rating = Double.parseDouble(scanned[5]);
+		    	  numRatings = Integer.parseInt(scanned[6]);
+		    	  x = Integer.parseInt(scanned[7]);
+		    	  y = Integer.parseInt(scanned[8]);
+		    	  driverLoc = new Point(x,y);
+		    	  Driver thisDriver = new Driver(driverName, driverBalance, carTitle, driverStatus, rating, numRatings, driverLoc);
+		    	  thisDriver.printDriverInfo();
+		    	  drivers.add(thisDriver);
+	    	  }
+	    	  else {
+	    		  passengerName = scanned[1];
+	    		  passengerBalance = Double.parseDouble(scanned[2]);
+	    		  x = Integer.parseInt(scanned[3]);
+	    		  y = Integer.parseInt(scanned[4]);
+	    		  passengerLoc = new Point(x,y);
+	    		  Passenger thisPassenger = new Passenger(passengerName, passengerBalance, passengerLoc);
+	    		  thisPassenger.printPassengerInfo();
+	    		  passengers.add(thisPassenger);
+	    	  }
+	      }
+	    }
+	    finally{
+	      scanner.close();
+	    }
+	}
+	
+	
 	public static void main(String [] args) {
-		Driver testDriver1 = new Driver("Jessie", 0, "Hyundai Accent", code.Status.AVAILABLE, -1, new Point(0,0));
-		Driver testDriver2 = new Driver("Benjamin", 0, "Toyota Camarola", code.Status.AVAILABLE, -1, new Point(0,0));
-		Driver testDriver3 = new Driver("Frank", 0, "Prius", code.Status.AVAILABLE, -1, new Point(0,0));
-		Passenger testPassenger1 = new Passenger("Manny", 20, -1, new Point(0,0));
-		Passenger testPassenger2 = new Passenger("Alexa", 400, -1, new Point(0,0));
-		Passenger testPassenger3 = new Passenger("Ryan", 0, -1, new Point(0,0));
-		Driver[] drivers = new Driver[3];
-		Passenger[] passengers = new Passenger[3];
-		drivers[0] = testDriver1;
-		drivers[1] = testDriver2;
-		drivers[2] = testDriver3;
-		passengers[0] = testPassenger1;
-		passengers[1] = testPassenger2;
-		passengers[2] = testPassenger3;
-		MapGrid testMap = new MapGrid(drivers, passengers);
-		testMap.PrintMap();
+		UberAppSimulator simulate = new UberAppSimulator();
+//		System.out.println("Working Directory = " +
+//	              System.getProperty("user.dir"));
+		try {
+			readFileInfo();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		MapGrid testMap = new MapGrid(UberAppSimulator.drivers, UberAppSimulator.passengers);
+//		testMap.PrintMap();
 	}
 }

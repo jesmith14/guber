@@ -2,21 +2,25 @@ package code;
 
 import java.awt.Point;
 
-public class Driver {
+public class Driver implements Comparable<Driver> {
 	private String name;
-	private double balance;
+	private Double balance;
 	private String carTitle;
 	private Status status;
-	private int rating;
+	private Double rating;
+	private int numRatings;
 	private Point location;
+	private int distanceFromPassenger;
 	
-	public Driver(String name, double balance, String carTitle, Status status, int rating, Point location) {
+	public Driver(String name, Double balance, String carTitle, Status status, Double rating, int numRatings, Point location) {
 		this.name = name;
 		this.balance = balance;
 		this.carTitle = carTitle;
 		this.status = status;
 		this.rating = rating;
+		this.numRatings = numRatings;
 		this.location = location;
+		this.distanceFromPassenger = Integer.MAX_VALUE;
 	}
 	
 	public String getName() {
@@ -27,7 +31,7 @@ public class Driver {
 		this.name = name;
 	}
 	
-	public double getBalance() {
+	public Double getBalance() {
 		return this.balance;
 	}
 	
@@ -51,11 +55,11 @@ public class Driver {
 		this.status = status;
 	}
 	
-	public int getRating() {
+	public Double getRating() {
 		return this.rating;
 	}
 	
-	public void setRating(int rating) {
+	public void setRating(Double rating) {
 		this.rating = rating;
 	}
 	
@@ -69,6 +73,26 @@ public class Driver {
 	
 	public void acceptPassenger() {
 		
+	}
+	
+	public void printDriverInfo() {
+		System.out.println("Driver | Name: " + this.getName() + " | Balance: " + this.getBalance() + " | Car Title: " + this.getCarTitle() + " | Status: " + this.getStatus() + " | Rating: " + this.getRating() + " | Location: " + this.getLocation());
+	}
+	
+	public void setDistanceFromPassenger(int num) {
+		this.distanceFromPassenger = num;
+	}
+	
+	public int getDistanceFromPassenger() {
+		return this.getDistanceFromPassenger();
+	}
+
+	@Override
+	public int compareTo(Driver o) {
+        if(this.getDistanceFromPassenger() < o.getDistanceFromPassenger()){
+            return 1;
+        }
+        return 0;
 	}
 
 }

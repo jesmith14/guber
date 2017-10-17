@@ -1,12 +1,13 @@
 package code;
 
 import java.awt.Point;
+import java.util.ArrayList;
 
 public class MapGrid {
 	private int[][] grid;
-	private Passenger[] passengers;
-	private Driver[] drivers;
-	private final int mapSize = 50;
+	private ArrayList<Passenger> passengers;
+	private ArrayList<Driver> drivers;
+	private final int mapSize = 300;
 	
 	/*
 	 * MapGrid constructor 
@@ -14,7 +15,7 @@ public class MapGrid {
 	 * Driver [] drivers that indicates current drivers
 	 * Passenger [] passengers that indicates current passengers
 	 */
-	public MapGrid(Driver[] drivers, Passenger[] passengers) {
+	public MapGrid(ArrayList<Driver> drivers, ArrayList<Passenger> passengers) {
 		this.grid = new int[mapSize][mapSize];
 		this.passengers = passengers;
 		this.drivers = drivers;
@@ -27,19 +28,16 @@ public class MapGrid {
 	 */
 	public void setUpMap() {
 		Point randomLocation;
-		int x, y;
-		for(int i = 0; i < drivers.length; i ++) {
-			x = (int) (Math.random() * this.mapSize);
-			y = (int) (Math.random() * this.mapSize);
-			randomLocation = new Point(x, y);
-			this.drivers[i].setLocation(randomLocation);
+		int x;
+		int y;
+		for(int i = 0; i < drivers.size(); i ++) {
+			x = (int)drivers.get(i).getLocation().getX();
+			y = (int)drivers.get(i).getLocation().getY();
 			this.grid[x][y]++;
 		}
-		for(int j = 0; j < passengers.length; j++) {
-			x = (int) (Math.random() * this.mapSize);
-			y = (int) (Math.random() * this.mapSize);
-			randomLocation = new Point(x, y);
-			this.passengers[j].setLocation(randomLocation);
+		for(int j = 0; j < passengers.size(); j++) {
+			x = (int)passengers.get(j).getLocation().getX();
+			y = (int)passengers.get(j).getLocation().getY();
 			this.grid[x][y]++;
 		}
 	}
@@ -48,11 +46,11 @@ public class MapGrid {
 		return this.grid;
 	}
 	
-	public Driver[] getDrivers() {
+	public ArrayList<Driver> getDrivers() {
 		return this.drivers;
 	}
 	
-	public Passenger[] getPassengers() {
+	public ArrayList<Passenger> getPassengers() {
 		return this.passengers;
 	}
 	
