@@ -1,16 +1,13 @@
 package code;
 
 import java.awt.Point;
+import java.util.ArrayList;
 
 public class Ride {
 	private Point pickup;
 	private Point dropoff;
 	private float fair;
-	private boolean enRoute;
-	private boolean arrivedAtPickup;
-	private boolean inProgress;
-	private boolean cancelled;
-	private boolean arrivedAtDropoff;
+	private Status status;
 	
 	public Ride(Point pickup, Point dropoff) {
 		this.pickup = pickup;
@@ -39,45 +36,5 @@ public class Ride {
 	
 	public void setFair(float fair) {
 		this.fair = fair;
-	}
-	
-	public boolean getEnRoute() {
-		return this.enRoute;
-	}
-	
-	public void setEnRoute(boolean enRoute) {
-		this.enRoute = enRoute;
-	}
-	
-	public boolean getArrivedAtPickup() {
-		return this.arrivedAtPickup;
-	}
-	
-	public void setArrivedAtPickup(boolean arrivedAtPickup) {
-		this.arrivedAtPickup = arrivedAtPickup;
-	}
-	
-	public boolean getInProgress() {
-		return this.inProgress;
-	}
-	
-	public void setInProgress(boolean inProgress) {
-		this.inProgress = inProgress;
-	}
-	
-	public boolean getCancelled() {
-		return this.cancelled;
-	}
-	
-	public void setCancelled(boolean cancelled) {
-		this.cancelled = cancelled;
-	}
-	
-	public boolean getArrivedAtDropoff() {
-		return this.arrivedAtDropoff;
-	}
-	
-	public void setArrivedAtDropoff(boolean arrivedAtDropOff) {
-		this.arrivedAtDropoff = arrivedAtDropOff;
 	}
 }

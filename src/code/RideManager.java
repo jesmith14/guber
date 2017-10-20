@@ -7,13 +7,13 @@ import java.util.Queue;
 public class RideManager {
 	private Ride currentRide;
 	private MapGrid map;
-	private Queue<Driver> closestDrivers;
 	private ArrayList<Driver> drivers;
 	
 	public RideManager(Ride ride, MapGrid map, ArrayList<Driver> drivers) {
 		this.currentRide = ride;
 		this.map = map;
 		this.drivers = drivers;
+		this.startRide();
 	}
 	
 	public void updateBalances() {
@@ -35,10 +35,20 @@ public class RideManager {
 			this.drivers.get(i).setDistanceFromPassenger(currentDistance);
 		}
 		Collections.sort(this.drivers);
+		System.out.println("HERE");
+		this.drivers.get(0).printDriverInfo();
 	}
 	
-	public void startDrive() {
-		this.drivers.get(0).printDriverInfo();
+	public void startRide() {
+		this.findNearestDriver();
+		int i = 0;
+		Driver currentDriver = this.drivers.get(i);
+		while(currentDriver.getStatus() != Status.AVAILABLE) {
+			i++;
+			currentDriver = this.drivers.get(i);
+		}
+		currentDriver.setStatus(Status.ENROUTE);
+		
 		//todo: set conditionals for enroute, arrived, to destination, at destination
 	}
 

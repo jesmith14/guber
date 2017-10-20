@@ -53,6 +53,12 @@ public class Driver implements Comparable<Driver> {
 	
 	public void setStatus(Status status) {
 		this.status = status;
+		if(this.status == status.ARRIVED) {
+			System.out.println("Car has arrived at destination.");
+		}
+		else if(this.status == status.AVAILABLE) {
+			System.out.println("Driver " + this.getName() + " is now available.");
+		}
 	}
 	
 	public Double getRating() {
@@ -84,15 +90,12 @@ public class Driver implements Comparable<Driver> {
 	}
 	
 	public int getDistanceFromPassenger() {
-		return this.getDistanceFromPassenger();
+		return this.distanceFromPassenger;
 	}
 
 	@Override
 	public int compareTo(Driver o) {
-        if(this.getDistanceFromPassenger() < o.getDistanceFromPassenger()){
-            return 1;
-        }
-        return 0;
+        return (int)(this.getDistanceFromPassenger() - o.getDistanceFromPassenger());
 	}
 
 }

@@ -69,15 +69,14 @@ public class UberAppSimulator {
 	
 	public static void main(String [] args) {
 		UberAppSimulator simulate = new UberAppSimulator();
-//		System.out.println("Working Directory = " +
-//	              System.getProperty("user.dir"));
 		try {
 			readFileInfo();
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println("No File Found");
 		}
 		MapGrid testMap = new MapGrid(UberAppSimulator.drivers, UberAppSimulator.passengers);
 //		testMap.PrintMap();
+		Ride ride1 = new Ride(passengers.get(4).getLocation(), new Point(4,5));
+		RideManager manager1 = new RideManager(ride1, testMap, drivers);
 	}
 }
