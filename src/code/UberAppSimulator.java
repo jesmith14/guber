@@ -182,7 +182,6 @@ public class UberAppSimulator {
 			}
 		}
 		logFinalState();
-		System.out.println("*****" + simulationObject);
 		writeJSONFile();
 	}
 }

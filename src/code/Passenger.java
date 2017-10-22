@@ -41,8 +41,6 @@ public class Passenger {
 	public void setLocation(Point location) {
 		this.previousLocation = this.getLocation();
 		this.location = location;
-		System.out.println("**Previous location in the passenger class: " + previousLocation);
-		System.out.println("**New location in the passenger class: " + this.location);
 	}
 	
 	public void setInitialBalance(double balance) {

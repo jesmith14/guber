@@ -42,8 +42,6 @@ public class Driver implements Comparable<Driver> {
 	public void setBalance(double balance) {
 		this.initialBalance = this.getBalance();
 		this.balance = balance;
-		System.out.println("Old balance: " + this.initialBalance);
-		System.out.println("New Balance: " + this.balance);
 	}
 	
 	public String getCarTitle() {

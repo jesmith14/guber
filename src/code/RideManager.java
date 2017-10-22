@@ -70,7 +70,6 @@ public class RideManager {
 	
 	public boolean validateFair(double fair) {
 		if(this.passenger.getBalance() < fair) {
-			System.out.println("Passenger " + passenger.getName() + " does not have enough money to cover fair. Ride Cancelled");
 			this.cancelledRides.add(passenger.getName());
 			return false;
 		}
@@ -132,14 +131,5 @@ public class RideManager {
 	public double getInitialPassengerBalance() {
 		return this.initialPassengerBalance;
 	}
-	
-//	public int getSuccessfulRides() {
-//		return this.successfulRide;
-//	}
-//	
-//	public int getCancelledRides() {
-//		System.out.println("HEREHERHE" + this.cancelledRide);
-//		return this.cancelledRide;
-//	}
 
 }
