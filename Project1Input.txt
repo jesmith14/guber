@@ -1,3 +1,6 @@
+#Value(D=Driver P=Passenger R=Rate)
+#Driver: Name, balance, carTitle, Status, currentRating, number of Ratings, locationX, locationY
+#Passenger: Name, balance, locationX, locationY
 D,Jessie,200,Hyundai Accent,AVAILABLE,4.5,20,2,3
 D,Benjamin,1035,Toyota Cameral,AVAILABLE,2.2,5,55,72
 D,Frank,9000,Prius,AVAILABLE,3.7,400,205,40
@@ -11,7 +14,8 @@ D,Arash,270,Volkswagen 4-door,AVAILABLE,2.8,90,58,13
 D,Claudia,79,Nissan Murano,AVAILABLE,4.8,30,1,1
 D,Laura,4308,Tesla X,AVAILABLE,5.0,80,103,17
 P,Manny,200,100,100
-P,Cris,50,203,48
+P,Cris,5000,203,48
 P,Aditya,1000,92,48
 P,Jordyn,850,280,203
-P,Megha,92,1,1
+P,Megha,1500,10,10
+R,2.5

@@ -7,12 +7,14 @@ public class Driver implements Comparable<Driver> {
 	private Double balance;
 	private String carTitle;
 	private Status status;
-	private Double rating;
+	private double rating;
 	private int numRatings;
 	private Point location;
 	private int distanceFromPassenger;
+	private Point previousLocation;
+	private Double initialBalance;
 	
-	public Driver(String name, Double balance, String carTitle, Status status, Double rating, int numRatings, Point location) {
+	public Driver(String name, Double balance, String carTitle, Status status, double rating, int numRatings, Point location) {
 		this.name = name;
 		this.balance = balance;
 		this.carTitle = carTitle;
@@ -21,6 +23,8 @@ public class Driver implements Comparable<Driver> {
 		this.numRatings = numRatings;
 		this.location = location;
 		this.distanceFromPassenger = Integer.MAX_VALUE;
+		this.previousLocation = location;
+		this.initialBalance = balance;
 	}
 	
 	public String getName() {
@@ -36,7 +40,10 @@ public class Driver implements Comparable<Driver> {
 	}
 	
 	public void setBalance(double balance) {
+		this.initialBalance = this.getBalance();
 		this.balance = balance;
+		System.out.println("Old balance: " + this.initialBalance);
+		System.out.println("New Balance: " + this.balance);
 	}
 	
 	public String getCarTitle() {
@@ -54,19 +61,33 @@ public class Driver implements Comparable<Driver> {
 	public void setStatus(Status status) {
 		this.status = status;
 		if(this.status == status.ARRIVED) {
-			System.out.println("Car has arrived at destination.");
+//			System.out.println("Car has arrived at destination. It is a " + this.getCarTitle());
 		}
 		else if(this.status == status.AVAILABLE) {
-			System.out.println("Driver " + this.getName() + " is now available.");
+//			System.out.println("Driver " + this.getName() + " is now available.");
+		}
+		else if(this.status == status.ENROUTE) {
+//			System.out.println("Driver " + this.getName() + " is on their way!");
+		}
+		else if(this.status == status.INTRANSIT) {
+//			System.out.println("Ride with " + this.getName() + " is in progress!");
+		}
+		else if(this.status == status.FINISHED) {
+//			System.out.println("Ride complete. Please give " + this.getName() + " a rating.");
 		}
 	}
 	
-	public Double getRating() {
+	public double getRating() {
 		return this.rating;
 	}
 	
-	public void setRating(Double rating) {
-		this.rating = rating;
+	public void setRating(int rating) {
+		numRatings++;
+		double prevRating = this.rating;
+		double newRating = rating;
+		this.rating = (int)(((prevRating * numRatings)  + newRating)/ (numRatings + 1));
+		this.numRatings++;
+//		System.out.println("You gave " + this.getName() + " a rating of " + rating + ". " + this.getName() + "'s overall rating is now " + this.getRating());
 	}
 	
 	public Point getLocation() {
@@ -74,6 +95,7 @@ public class Driver implements Comparable<Driver> {
 	}
 	
 	public void setLocation(Point location) {
+		this.previousLocation = this.getLocation();
 		this.location = location;
 	}
 	
@@ -81,8 +103,8 @@ public class Driver implements Comparable<Driver> {
 		
 	}
 	
-	public void printDriverInfo() {
-		System.out.println("Driver | Name: " + this.getName() + " | Balance: " + this.getBalance() + " | Car Title: " + this.getCarTitle() + " | Status: " + this.getStatus() + " | Rating: " + this.getRating() + " | Location: " + this.getLocation());
+	public String printDriverInfo() {
+		return ("Driver | Name: " + this.getName() + " | Balance: " + this.getBalance() + " | Car Title: " + this.getCarTitle() + " | Status: " + this.getStatus() + " | Rating: " + this.getRating() + " | Location: (" + (int)this.getLocation().getX() + ", " + (int)this.getLocation().getY() + ")");
 	}
 	
 	public void setDistanceFromPassenger(int num) {
@@ -91,6 +113,18 @@ public class Driver implements Comparable<Driver> {
 	
 	public int getDistanceFromPassenger() {
 		return this.distanceFromPassenger;
+	}
+	
+	public Point getInitialLocation() {
+		return this.previousLocation;
+	}
+	
+	public void setInitialBalance(Double balance) {
+		this.initialBalance = balance;
+	}
+	
+	public Double getInitialBalance() {
+		return this.initialBalance;
 	}
 
 	@Override

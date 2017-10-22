@@ -6,12 +6,12 @@ import java.util.ArrayList;
 public class Ride {
 	private Point pickup;
 	private Point dropoff;
-	private float fair;
-	private Status status;
+	private double rate;
 	
-	public Ride(Point pickup, Point dropoff) {
+	public Ride(Point pickup, Point dropoff, double rate) {
 		this.pickup = pickup;
 		this.dropoff = dropoff;
+		this.rate = rate;
 	}
 	
 	public Point getPickup() {
@@ -30,11 +30,11 @@ public class Ride {
 		this.dropoff = location;
 	}
 	
-	public float getFair() {
-		return this.fair;
+	public void setRate(float rate) {
+		this.rate = rate;
 	}
 	
-	public void setFair(float fair) {
-		this.fair = fair;
+	public double getRate() {
+		return this.rate;
 	}
 }

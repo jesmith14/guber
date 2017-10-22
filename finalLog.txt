@@ -1,0 +1,23 @@
+Log Of Final State
+~~~~~~~~~~~~~~~~~~
+Passenger | Name: Manny | Balance: 200.0 | Location: (100, 100)
+Passenger | Name: Cris | Balance: 4597.5 | Location: (253, 193)
+Passenger | Name: Aditya | Balance: 650.0 | Location: (190, 94)
+Passenger | Name: Jordyn | Balance: 52.5 | Location: (11, 69)
+Passenger | Name: Megha | Balance: 775.0 | Location: (185, 229)
+~~~~~~~~~~~~~~~~~~
+Driver | Name: Jessie | Balance: 925.0 | Car Title: Hyundai Accent | Status: available | Rating: 4.0 | Location: (185, 229)
+Driver | Name: Claudia | Balance: 79.0 | Car Title: Nissan Murano | Status: available | Rating: 4.8 | Location: (1, 1)
+Driver | Name: Arash | Balance: 270.0 | Car Title: Volkswagen 4-door | Status: available | Rating: 2.8 | Location: (58, 13)
+Driver | Name: Yeng | Balance: 1777.5 | Car Title: Honda Civic | Status: available | Rating: 1.0 | Location: (11, 69)
+Driver | Name: Benjamin | Balance: 1035.0 | Car Title: Toyota Cameral | Status: available | Rating: 2.2 | Location: (55, 72)
+Driver | Name: Paul | Balance: 9000.0 | Car Title: Chevrolet Malibu | Status: available | Rating: 4.5 | Location: (140, 80)
+Driver | Name: Andrew | Balance: 0.0 | Car Title: BMW M4 | Status: available | Rating: 2.0 | Location: (12, 190)
+Driver | Name: Laura | Balance: 4658.0 | Car Title: Tesla X | Status: available | Rating: 4.0 | Location: (190, 94)
+Driver | Name: Costin | Balance: 200.0 | Car Title: Subaru Legacy | Status: available | Rating: 4.9 | Location: (100, 278)
+Driver | Name: Margarita | Balance: 4030.0 | Car Title: Honda CRV | Status: available | Rating: 2.1 | Location: (280, 120)
+Driver | Name: Frank | Balance: 9402.5 | Car Title: Prius | Status: available | Rating: 3.0 | Location: (253, 193)
+Driver | Name: Ian | Balance: 700.0 | Car Title: Mercedes Benz | Status: available | Rating: 3.7 | Location: (250, 198)
+~~~~~~~~~~~~~~~~~~
+Number of Successful Rides: 4 | Passengers with success:  Cris, Aditya, Jordyn, Megha,
+Cancelled Rides: 1 | Passengers who cancelled:  Manny,
