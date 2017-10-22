@@ -9,6 +9,13 @@ public class Passenger {
 	private double initialBalance;
 	private Point previousLocation;
 	
+	/**
+	 * Passenger Constructor that sets the initial values of a Passenger object
+	 * @param  name	String that specifies passenger name
+	 * @param	balance	double that specifies the passenger's initial balance
+	 * @param	location	a Point that specifies the passenger's initial location
+	 * @return      void
+	 */
 	public Passenger(String name, double balance, Point location) {
 		this.name = name;
 		this.balance = balance;
@@ -28,7 +35,7 @@ public class Passenger {
 	public double getBalance() {
 		return this.balance;
 	}
-	
+
 	public void setBalance(double balance) {
 		this.initialBalance = this.getBalance();
 		this.balance = balance;
@@ -51,6 +58,11 @@ public class Passenger {
 		return this.initialBalance;
 	}
 	
+	
+	/**
+	 * Function that returns a string with all the values of a passenger object 
+	 * @return      String with all passenger info
+	 */
 	public String printPassengerInfo() {
 		return ("Passenger | Name: " + this.getName() + " | Balance: " + this.getBalance() + " | Location: (" + (int)this.getLocation().getX() + ", " + (int)this.getLocation().getY() + ")");
 	}

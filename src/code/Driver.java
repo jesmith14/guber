@@ -7,6 +7,7 @@ public class Driver implements Comparable<Driver> {
 	private Double balance;
 	private String carTitle;
 	private Status status;
+	private double currentDriveRating;
 	private double rating;
 	private int numRatings;
 	private Point location;
@@ -14,6 +15,17 @@ public class Driver implements Comparable<Driver> {
 	private Point previousLocation;
 	private Double initialBalance;
 	
+	/**
+	 * Constructor for the Driver Class, sets all initial information for a driver.
+	 * @param  name  String that specifies Driver name
+	 * @param	balance	Double that specifies driver starting balance
+	 * @param	carTitle	String that specifies the driver's car title
+	 * @param	status	Status type that specifies the driver's current status
+	 * @param	rating	Double that specifies the driver's current rating
+	 * @param	numRatings	integer that specifies how many ratings the driver has recieved
+	 * @param	location	Point that specifies driver's current location
+	 * @return      void
+	 */
 	public Driver(String name, Double balance, String carTitle, Status status, double rating, int numRatings, Point location) {
 		this.name = name;
 		this.balance = balance;
@@ -25,6 +37,7 @@ public class Driver implements Comparable<Driver> {
 		this.distanceFromPassenger = Integer.MAX_VALUE;
 		this.previousLocation = location;
 		this.initialBalance = balance;
+		this.currentDriveRating = 5;
 	}
 	
 	public String getName() {
@@ -41,7 +54,7 @@ public class Driver implements Comparable<Driver> {
 	
 	public void setBalance(double balance) {
 		this.initialBalance = this.getBalance();
-		this.balance = balance;
+		this.balance = (balance * 0.8);
 	}
 	
 	public String getCarTitle() {
@@ -79,8 +92,15 @@ public class Driver implements Comparable<Driver> {
 		return this.rating;
 	}
 	
+	/**
+	 * Sets the rating for a driver by averaging the new rating with the old one
+	 * based on how many ratings the driver has had.
+	 * @param  rating  an integer between 1 and 5 that specifies the passengers rating for the driver
+	 * @return      void
+	 */
 	public void setRating(int rating) {
 		numRatings++;
+		this.currentDriveRating = rating;
 		double prevRating = this.rating;
 		double newRating = rating;
 		this.rating = (int)(((prevRating * numRatings)  + newRating)/ (numRatings + 1));
@@ -97,10 +117,10 @@ public class Driver implements Comparable<Driver> {
 		this.location = location;
 	}
 	
-	public void acceptPassenger() {
-		
-	}
-	
+	/**
+	 * Gets all info from a driver compiled into one string.
+	 * @return      String
+	 */
 	public String printDriverInfo() {
 		return ("Driver | Name: " + this.getName() + " | Balance: " + this.getBalance() + " | Car Title: " + this.getCarTitle() + " | Status: " + this.getStatus() + " | Rating: " + this.getRating() + " | Location: (" + (int)this.getLocation().getX() + ", " + (int)this.getLocation().getY() + ")");
 	}
@@ -124,7 +144,17 @@ public class Driver implements Comparable<Driver> {
 	public Double getInitialBalance() {
 		return this.initialBalance;
 	}
+	
+	public Double getCurrentRating() {
+		return this.currentDriveRating;
+	}
 
+	/**
+	 * Overridden compareTo method from the Comparable interface. Compares two drivers based on their
+	 * distance from a specified passenger location and returns the closest one.
+	 * @param  Driver  A driver, o, to compare to the current driver.
+	 * @return      Integer
+	 */
 	@Override
 	public int compareTo(Driver o) {
         return (int)(this.getDistanceFromPassenger() - o.getDistanceFromPassenger());

@@ -22,21 +22,25 @@ public class UberAppSimulator {
 	private static ArrayList<String> successfulRides;
 	private static ArrayList<String> cancelledRides;
 	private static JSONObject simulationObject;
-	private static double initialDriverBalance;
-	private static double initialPassengerBalance;
 	
+	/**
+	 * UberAppSimulator constructor that sets all of the values for drivers, passengers, successful/cancelled rides, and the JSON object for all the trips
+	 * @return      void
+	 */
 	public UberAppSimulator() {
 		drivers = new ArrayList<Driver>();
 		passengers = new ArrayList<Passenger>();
 		successfulRides = new ArrayList<String>();
 		cancelledRides = new ArrayList<String>();
 		simulationObject = new JSONObject();
-		initialDriverBalance = 0;
-		initialPassengerBalance = 0;
 	}
 	
+	/**
+	 * Helper function that reads information from a specified text file and parses it to create an array of
+	 * Driver objects and an array of Passenger objects with the correct information, as well as setting the current rate for rides.
+	 * @return      void
+	 */
 	public static void readFileInfo() throws FileNotFoundException {
-//		System.out.println("Reading from file.");
 	    fFileName = System.getProperty("user.dir")+"/"+"Project1Input.txt";
 	    Scanner scanner = new Scanner(new FileInputStream(fFileName));
 	    String[] scanned = null;
@@ -65,7 +69,6 @@ public class UberAppSimulator {
 		    	  y = Integer.parseInt(scanned[8]);
 		    	  driverLoc = new Point(x,y);
 		    	  Driver thisDriver = new Driver(driverName, driverBalance, carTitle, driverStatus, rating, numRatings, driverLoc);
-//		    	  thisDriver.printDriverInfo();
 		    	  drivers.add(thisDriver);
 	    	  }
 	    	  else if(scanned[0].charAt(0) == 'P') {
@@ -75,7 +78,6 @@ public class UberAppSimulator {
 	    		  y = Integer.parseInt(scanned[4]);
 	    		  passengerLoc = new Point(x,y);
 	    		  Passenger thisPassenger = new Passenger(passengerName, passengerBalance, passengerLoc);
-//	    		  thisPassenger.printPassengerInfo();
 	    		  passengers.add(thisPassenger);
 	    	  }
 	    	  else if(scanned[0].charAt(0) == 'R') {
@@ -88,6 +90,11 @@ public class UberAppSimulator {
 	    }
 	}
 	
+	/**
+	 * Validates the current drop off point to make sure it is in the grid, if not it cancels that ride
+	 * @param  dropOff	Point that represents the current dropoff location to be checked
+	 * @return      boolean that returns true if the specified drop off is in the grid and false if it is outside of the grid
+	 */
 	public static boolean validateDropOff(Point dropOff) {
 		int x = (int) dropOff.getX();
 		int y = (int) dropOff.getY();
@@ -99,12 +106,21 @@ public class UberAppSimulator {
 		}
 	}
 	
+	/**
+	 * Writes the JSON object with all of the trip information to a json file.
+	 * @return      void
+	 */
 	public static void writeJSONFile() throws IOException {
 		writer = new BufferedWriter(new FileWriter("trips.json"));
 		writer.write(simulationObject.toString());
 		writer.close();
 	}
 	
+	/**
+	 * Writes the log file for the final state of the simulation, logs the driver and passenger info at the time
+	 * of the simulation finish and specifies the users with successful or cancelled rides
+	 * @return      void
+	 */
 	public static void logFinalState() throws IOException {
 		writer = new BufferedWriter(new FileWriter("finalLog.txt"));
 		writer.write("Log Of Final State");
@@ -136,7 +152,11 @@ public class UberAppSimulator {
 		
 	}
 	
-	
+	/**
+	 * Main function that simulates a ride for every passenger in the map, then logs those rides in JSON objects
+	 * @param  args String [] that specifies the arguments of the program
+	 * @return      void
+	 */
 	public static void main(String [] args) throws IOException {
 		UberAppSimulator simulate = new UberAppSimulator();
 		try {
@@ -152,11 +172,11 @@ public class UberAppSimulator {
 //			Point randomDropOff = new Point(10, 305);
 			String successOrCancel;
 			if(validateDropOff(randomDropOff)) {
-				Point initialPassengerLocation = passengers.get(i).getLocation();
 				Ride ride = new Ride(passengers.get(i).getLocation(), randomDropOff, rate);
-				RideManager manager1 = new RideManager(ride, testMap, drivers, passengers.get(i), successfulRides, cancelledRides, initialDriverBalance, initialPassengerBalance);
+				RideManager manager1 = new RideManager(ride, drivers, passengers.get(i), successfulRides, cancelledRides);
 				JSONObject tripObject = new JSONObject();
 				tripObject.put("Driver Name", drivers.get(0).getName());
+				tripObject.put("Rating for this drive", drivers.get(0).getCurrentRating());
 				tripObject.put("Car Title", drivers.get(0).getCarTitle());
 				tripObject.put("Driver Rating", drivers.get(0).getRating());
 				tripObject.put("Passenger Name", passengers.get(i).getName());
@@ -178,7 +198,13 @@ public class UberAppSimulator {
 				tripObject.put("Ending Driver and Passenger Location", "( " + randomDropOff.getX() + ", " + randomDropOff.getY() + ")");
 				simulationObject.put("Trip: " + (i + 1), tripObject);
 			} else {
-				System.out.println("Dropoff outside of grid area, please specify new dropoff");
+				cancelledRides.add(passengers.get(i).getName());
+				JSONObject tripObject = new JSONObject();
+				tripObject.put("Passenger Name", passengers.get(i).getName());
+				tripObject.put("Passenger Location", passengers.get(i).getLocation());
+				tripObject.put("Ride Success or Cancelled", "Cancelled");
+				tripObject.put("Dropoff location", "( " + randomDropOff.getX() + ", " + randomDropOff.getY() + ")");
+				simulationObject.put("Trip: " + (i + 1), tripObject);
 			}
 		}
 		logFinalState();

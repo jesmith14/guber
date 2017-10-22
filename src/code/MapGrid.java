@@ -9,11 +9,12 @@ public class MapGrid {
 	private ArrayList<Driver> drivers;
 	private final int mapSize = 300;
 	
-	/*
+
+	/**
 	 * MapGrid constructor 
-	 * @params integer value n for size of the array
-	 * Driver [] drivers that indicates current drivers
-	 * Passenger [] passengers that indicates current passengers
+	 * @param  drivers an ArrayList of drivers that specifies the current drivers to add to the grid
+	 * @param	passengers	an ArrayList of passengers to be added to the grid
+	 * @return      void
 	 */
 	public MapGrid(ArrayList<Driver> drivers, ArrayList<Passenger> passengers) {
 		this.grid = new int[mapSize][mapSize];
@@ -22,12 +23,13 @@ public class MapGrid {
 		this.setUpMap();
 	}
 
-	/*
-	 * Function to set up the 2D array, initializing 0 for empty values, 
-	 * 1 for a driver spot, and 2 for a passenger spot
+
+	/**
+	 * sets up the map based on the driver and passenger locations by adding 1 to every spot that has a person
+	 * and indicating a 0 for empty fields
+	 * @return      void
 	 */
 	public void setUpMap() {
-		Point randomLocation;
 		int x;
 		int y;
 		for(int i = 0; i < drivers.size(); i ++) {
@@ -54,8 +56,9 @@ public class MapGrid {
 		return this.passengers;
 	}
 	
-	/*
-	 * Helper function to print the current map for testing
+	/**
+	 * Helper funciton to print the current map for testing
+	 * @return      void
 	 */
 	public void PrintMap() {
 		for(int i = 0; i < this.grid.length; i++) {
