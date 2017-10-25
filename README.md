@@ -24,21 +24,21 @@ Included is:
 1) Put all json into a json online formatter for easier reading
 2) Each trip is it's own upper level json object
 3) Within each trip, you will find: (an example is laid out below)
-      "Car Title":"Hyundai Accent",
-      "Ending Passenger Balance":970.0,
-      "Initial Passenger Balance":1500.0,
-      "Rating for this drive":1.0,
-      "Initial Passenger Location":"( 10.0, 10.0)",
-      "Pickup Location":"( 10.0, 10.0)",
-      "Driver Rating":4.0,
-      "Passenger Name":"Megha",
-      "Ride Success or Cancelled":"Successful",
-      "Driver Name":"Jessie",
-      "Total Fair":530.0,
-      "Ending Driver and Passenger Location":"( 124.0, 177.0)",
-      "Ending Driver Balance":584.0,
-      "Initial Driver Location":"( 2.0, 3.0)",
-      "Initial Driver Balance":200.0
+      - "Car Title":"Hyundai Accent",
+      - "Ending Passenger Balance":970.0,
+      - "Initial Passenger Balance":1500.0,
+      - "Rating for this drive":1.0,
+      - "Initial Passenger Location":"( 10.0, 10.0)",
+      - "Pickup Location":"( 10.0, 10.0)",
+      - "Driver Rating":4.0,
+      - "Passenger Name":"Megha",
+      - "Ride Success or Cancelled":"Successful",
+      - "Driver Name":"Jessie",
+      - "Total Fair":530.0,
+      - "Ending Driver and Passenger Location":"( 124.0, 177.0)",
+      - "Ending Driver Balance":584.0,
+      - "Initial Driver Location":"( 2.0, 3.0)",
+      - "Initial Driver Balance":200.0
 
 ## How to Modify Code for Specific Use Cases:
 ### - To get a dropoff out of bounds:
