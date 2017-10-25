@@ -15,15 +15,10 @@ Included is:
 3) Passenger: Name, balance, locationX, locationY
 
 ## How the finalLog.txt output text file is formatted:
-~~~~~
-Passengers:
-Name | Balance | Final Location
-~~~~~
-Drivers: 
-Name | Balance | Car Title | Status | Rating | Final Location
-~~~~
-Number of successful rides : With names of passengers who's rides were successful
-Number of cancelled rides : With names of passengers who's rides were cancelled (due to insufficient funds)
+- Passengers: Name | Balance | Final | Location
+- Drivers: Name | Balance | Car Title | Status | Rating | Final Location
+- Number of successful rides : With names of passengers who's rides were successful
+- Number of cancelled rides : With names of passengers who's rides were cancelled (due to insufficient funds)
 
 ## How the trips.json file is formatted:
 1) Put all json into a json online formatter for easier reading
