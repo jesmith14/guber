@@ -49,3 +49,10 @@ Included is:
 
 ### - To see a ride cancelled because a passenger had not enough money.
       This should already be implemented in the code, but in case the random dropoff locations all happen to be very close (which is unlikely), you can also manually check for this by giving a passenger 0 money in the inputText file. You'll see the ride is cancelled and the next passenger begins their ride.
+      
+      
+## Output files
+- When you run the program the two output files will be created, written to, and saved in the current working directory.
+- finalLog.txt is the final state of the program
+- trips.json is the json file containing all info for every individual trip
+
